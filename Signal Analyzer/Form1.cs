@@ -177,6 +177,35 @@ namespace Signal_Analyzer
 
 		private void select_btn_Click(object sender, EventArgs e)
 		{
+			OpenFileDialog open = new OpenFileDialog();
+			//open.Filter = "Wave File (.wav)|.wav";
+			if (open.ShowDialog() != DialogResult.OK) return;
+			chart1.Series.Clear();
+			chart1.Series.Add("wave");
+			chart1.Series["wave"].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+			chart1.Series["wave"].Color = System.Drawing.Color.Green;
+			chart1.Series["wave"].ChartArea = "ChartArea1";
+			NAudio.Wave.WaveChannel32 wave = new NAudio.Wave.WaveChannel32(new NAudio.Wave.WaveFileReader(open.FileName));
+
+			byte[] buffer = new byte[426565];
+			int read;
+			while (wave.Position < wave.Length)
+			{
+				read = wave.Read(buffer, 0, 426565);
+				for (int i = 0; i < read / 4; i++)
+				{
+					chart1.Series["wave"].Points.Add(BitConverter.ToSingle(buffer, i * 4));
+				}
+			}
+
+
+
+
+
+
+
+
+			/*
 			var fileDialog = new OpenFileDialog();
 			DialogResult result = fileDialog.ShowDialog(); // Show the dialog.
 			if (result == DialogResult.OK) // Test result.
@@ -205,7 +234,7 @@ namespace Signal_Analyzer
 				catch (IOException)
 				{
 				}
-			}
+			}*/
 		}
 	}
 }
