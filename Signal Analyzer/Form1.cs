@@ -180,9 +180,11 @@ namespace Signal_Analyzer
 			OpenFileDialog open = new OpenFileDialog();
 			//open.Filter = "Wave File (.wav)|.wav";
 			if (open.ShowDialog() != DialogResult.OK) return;
+			label_filename.Text = open.FileName;
 			chart1.Series.Clear();
 			chart1.Series.Add("wave");
 			chart1.Series["wave"].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+			chart1.Series["wave"].IsVisibleInLegend = false;
 			chart1.Series["wave"].Color = System.Drawing.Color.Green;
 			chart1.Series["wave"].ChartArea = "ChartArea1";
 			NAudio.Wave.WaveChannel32 wave = new NAudio.Wave.WaveChannel32(new NAudio.Wave.WaveFileReader(open.FileName));
@@ -197,44 +199,34 @@ namespace Signal_Analyzer
 					chart1.Series["wave"].Points.Add(BitConverter.ToSingle(buffer, i * 4));
 				}
 			}
+		}
 
-
-
-
-
-
-
-
-			/*
-			var fileDialog = new OpenFileDialog();
-			DialogResult result = fileDialog.ShowDialog(); // Show the dialog.
-			if (result == DialogResult.OK) // Test result.
+		private void radio_zoom_x_CheckedChanged(object sender, EventArgs e)
+		{
+			if (radio_zoom_x.Checked)
 			{
-				fileName = fileDialog.FileName;
-				try
-				{
-					short[] f = readAmplitudeValues(fileName);
-					chart1.Series.Clear();
-					var series1 = new System.Windows.Forms.DataVisualization.Charting.Series
-					{
-						Name = "Series1",
-						Color = System.Drawing.Color.Green,
-						IsVisibleInLegend = false,
-						IsXValueIndexed = true,
-						ChartType = SeriesChartType.Line
-					};
-					chart1.Series.Add(series1);
-					for(int i = 0; i < f.Length && i < 1600000; i+=2)
-					{
-						series1.Points.AddY(f[i]);
-					}
-					chart1.Invalidate();
-					//label1.Text = File.ReadAllText(fileName);
-				}
-				catch (IOException)
-				{
-				}
-			}*/
+				chart1.ChartAreas["ChartArea1"].CursorX.IsUserEnabled = true;
+				chart1.ChartAreas["ChartArea1"].CursorX.IsUserSelectionEnabled = true;
+			}
+			else
+			{
+				chart1.ChartAreas["ChartArea1"].CursorX.IsUserEnabled = false;
+				chart1.ChartAreas["ChartArea1"].CursorX.IsUserSelectionEnabled = false;
+			}
+		}
+
+		private void radio_zoom_y_CheckedChanged(object sender, EventArgs e)
+		{
+			if (radio_zoom_y.Checked)
+			{
+				chart1.ChartAreas["ChartArea1"].CursorY.IsUserEnabled = true;
+				chart1.ChartAreas["ChartArea1"].CursorY.IsUserSelectionEnabled = true;
+			}
+			else
+			{
+				chart1.ChartAreas["ChartArea1"].CursorY.IsUserEnabled = false;
+				chart1.ChartAreas["ChartArea1"].CursorY.IsUserSelectionEnabled = false;
+			}
 		}
 	}
 }
