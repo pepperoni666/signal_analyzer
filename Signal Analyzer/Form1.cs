@@ -31,6 +31,8 @@ namespace Signal_Analyzer
 		private void select_btn_Click(object sender, EventArgs e)
 		{
 			OpenFileDialog open = new OpenFileDialog();
+			open.Filter = "wav files (*.wav)|*.wav";
+			open.FilterIndex = 1;
 			if (open.ShowDialog() != DialogResult.OK) return;
 			label_filename.Text = open.FileName;
 			System.Windows.Forms.Cursor.Current = Cursors.WaitCursor;

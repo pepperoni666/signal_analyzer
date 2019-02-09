@@ -44,7 +44,7 @@
 			// 
 			// stop_btn
 			// 
-			this.stop_btn.Location = new System.Drawing.Point(12, 100);
+			this.stop_btn.Location = new System.Drawing.Point(149, 12);
 			this.stop_btn.Name = "stop_btn";
 			this.stop_btn.Size = new System.Drawing.Size(131, 72);
 			this.stop_btn.TabIndex = 1;
@@ -56,7 +56,7 @@
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(155, 184);
+			this.ClientSize = new System.Drawing.Size(291, 94);
 			this.Controls.Add(this.stop_btn);
 			this.Controls.Add(this.start_btn);
 			this.Name = "Recorder";

@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -23,12 +24,25 @@ namespace Signal_Analyzer
 		{
 			InitializeComponent();
 			stop_btn.Enabled = false;
+
+			SaveFileDialog saveFileDialog1 = new SaveFileDialog();
+
+			saveFileDialog1.Filter = "wav files (*.wav)|*.wav";
+			saveFileDialog1.FilterIndex = 1;
+
+			if (saveFileDialog1.ShowDialog() == DialogResult.OK)
+			{
+				outputFilePath = saveFileDialog1.FileName;
+			}
 		}
 
 		private void start_btn_Click(object sender, EventArgs e)
 		{
 			recording = true;
-			outputFilePath = System.IO.Path.GetDirectoryName(Application.ExecutablePath) + "\\recordedSound.wav";
+			if (outputFilePath == null)
+			{
+				outputFilePath = System.IO.Path.GetDirectoryName(Application.ExecutablePath) + "\\recordedSound.wav";
+			}
 			//System.IO.File.Create(outputFilePath);
 			// Redefine the capturer instance with a new instance of the LoopbackCapture class
 			CaptureInstance = new WaveIn();

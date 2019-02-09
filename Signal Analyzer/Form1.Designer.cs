@@ -28,7 +28,7 @@
 		/// </summary>
 		private void InitializeComponent()
 		{
-			System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+			System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
 			this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
 			this.select_btn = new System.Windows.Forms.Button();
 			this.label_filename = new System.Windows.Forms.Label();
@@ -41,11 +41,11 @@
 			// 
 			// chart1
 			// 
-			chartArea1.BorderColor = System.Drawing.Color.Gray;
-			chartArea1.CursorX.IsUserEnabled = true;
-			chartArea1.CursorX.IsUserSelectionEnabled = true;
-			chartArea1.Name = "ChartArea1";
-			this.chart1.ChartAreas.Add(chartArea1);
+			chartArea3.BorderColor = System.Drawing.Color.Gray;
+			chartArea3.CursorX.IsUserEnabled = true;
+			chartArea3.CursorX.IsUserSelectionEnabled = true;
+			chartArea3.Name = "ChartArea1";
+			this.chart1.ChartAreas.Add(chartArea3);
 			this.chart1.Location = new System.Drawing.Point(12, 41);
 			this.chart1.Name = "chart1";
 			this.chart1.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.Grayscale;
@@ -67,10 +67,10 @@
 			// 
 			this.label_filename.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-			this.label_filename.Location = new System.Drawing.Point(875, 12);
+			this.label_filename.Location = new System.Drawing.Point(114, 9);
 			this.label_filename.Name = "label_filename";
 			this.label_filename.Padding = new System.Windows.Forms.Padding(5, 4, 0, 0);
-			this.label_filename.Size = new System.Drawing.Size(75, 23);
+			this.label_filename.Size = new System.Drawing.Size(674, 23);
 			this.label_filename.TabIndex = 3;
 			// 
 			// pictureBox1
